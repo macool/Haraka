@@ -51,9 +51,12 @@ Plugin.prototype.haraka_require = function (name) {
 Plugin.prototype.core_require = Plugin.prototype.haraka_require;
 
 function plugin_search_paths (prefix, name) {
+    var private_scope = '@bitzesty/';
+
     return [
         path.resolve(prefix, 'plugins', name + '.js'),
         path.resolve(prefix, 'node_modules', 'haraka-plugin-' + name, 'package.json'),
+        path.resolve(prefix, 'node_modules', private_scope + 'haraka-plugin-' + name, 'package.json'),
         path.resolve(prefix, '..', 'haraka-plugin-' + name, 'package.json')
     ];
 }
